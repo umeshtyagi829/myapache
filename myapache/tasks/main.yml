@@ -1,0 +1,19 @@
+# tasks file for myapache
+
+- name: Install pacakges
+  package:
+          name: "httpd"
+          state: present
+  package:
+          name: "php"
+          state: present
+
+- name: "Copy web-page in dest"
+  copy:
+          src: "/root/Ansible-Role/myapache/files/index.php"
+          dest: "/var/www/html/index.php"
+
+- name: "Start the services"
+  service:
+          name: "httpd"
+          state: started
